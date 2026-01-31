@@ -36,6 +36,24 @@ public class DoublyLinkedList<E> {
    * Node of a doubly linked list, which stores a reference to its
    * element and to both the previous and next node in the list.
    */
+
+  public void concatenate(DoublyLinkedList<E> other)// this the method
+  {
+    // logic
+
+    if(other.isEmpty()) return;
+
+    Node<E> predecessor = this.trailer.getPrev();
+    Node<E> successor = other.header.getNext();
+
+    // connecting the two lists
+    predecessor.setNext(successor); // the last pointing the first (header)
+    successor.setPrev(predecessor); // the first pointing to the last ( tail )
+
+    this.trailer = other.trailer;
+    this.size += other.size;
+  }
+
   private static class Node<E> {
 
     /** The element stored at this node */
@@ -233,9 +251,13 @@ public class DoublyLinkedList<E> {
 	  list.addLast("BOS");
 	  //
 	  list.addFirst("LAX");
-	  
+
 	  System.out.println(list);
 	  System.out.println(list.first());
 	  //
+
+
+
+
   }
 } //----------- end of DoublyLinkedList class -----------
