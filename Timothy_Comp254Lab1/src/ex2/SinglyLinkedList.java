@@ -36,6 +36,34 @@ public class SinglyLinkedList<E> implements Cloneable {
    * element and to the subsequent node in the list (or null if this
    * is the last node).
    */
+
+  public void swapNodes (Node<E>node1,Node<E>node2){
+    if (node1 == null || node2 == null || node1 == node2) return;
+
+    Node<E> prev1 = null, prev2 = null, curr = head;
+
+    while(curr != null && (prev1 == null || prev2 ==null )) {
+      if (curr.next == node1) prev1 = curr;
+      if (curr.next == node2) prev2 = curr;
+      curr = curr.next;
+    }
+
+    if( node1 == head) prev1 = null;
+    if(node2 == head) prev2 = null;
+
+    if(prev1 != null) prev1.next = node2;
+    else head = node2 ;
+
+    if(prev2 != null) prev2.next = node1;
+    else head = node1;
+
+    Node<E> temp = node1.next;
+    node1.next = node2.next;
+    node2.next = temp;
+
+    if(node1.next == null) tail = node1;
+    if(node2.next == null) tail = node2;
+  }
   private static class Node<E> {
 
     /** The element stored at this node */
@@ -232,6 +260,13 @@ public class SinglyLinkedList<E> implements Cloneable {
 	  list.addFirst("LAX");
 	  System.out.println(list);
 	  //
+
+    // swap head and tail
+    Node<String> node1 = list.head;
+    Node<String> node2 = list.tail;
+    list.swapNodes(node1,node2);
+
+    System.out.println("After swapping head abd tail " + list);
   }
   
 }
