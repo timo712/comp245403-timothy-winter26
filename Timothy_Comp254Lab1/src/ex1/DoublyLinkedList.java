@@ -72,6 +72,8 @@ public class DoublyLinkedList<E> {
      * @param p  reference to a node that should precede the new node
      * @param n  reference to a node that should follow the new node
      */
+
+    // ** This the constructor  (a)
     public Node(E e, Node<E> p, Node<E> n) {
       element = e;
       prev = p;
@@ -204,6 +206,7 @@ public class DoublyLinkedList<E> {
    * @param predecessor   node just before the location where the new element is inserted
    * @param successor     node just after the location where the new element is inserted
    */
+  // this call the Constructor (a) 
   private void addBetween(E e, Node<E> predecessor, Node<E> successor) {
     // create and link a new node
     Node<E> newest = new Node<>(e, predecessor, successor);
